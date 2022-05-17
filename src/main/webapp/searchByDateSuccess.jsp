@@ -1,13 +1,12 @@
+<%@ page import="com.example.task.searchdate" %>
 <%@ page import="com.example.task.hotelBean" %>
-<%@ page import="com.example.task.search" %><%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: vinis
-  Date: 12-05-2022
-  Time: 12:09
+  Date: 17-05-2022
+  Time: 12:23
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="com.example.task.searchdate" %>
-<%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -50,7 +49,6 @@
 </head>
 <body>
 <nav>
-    <a href="guestHomePage.jsp">HOME </a>
     <a href="displayAvalibleRooms.jsp">ROOMS</a>
 </nav>
 <br><br><br>
@@ -58,9 +56,9 @@
 <br><br>
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>
-<h1>
+
 <%
-    List<hotelBean> list= search.roomsearch(obj);
+    List<hotelBean> list= searchdate.roomsearchByDate(obj);
     StringBuilder template = new StringBuilder();
     if(list.size()==0){
         template.append("<tr>No Rooms with the given specification. Check the available rooms</tr>");
@@ -72,10 +70,8 @@
         }
     }
 %>
-</h1>
 <table>
     <%=template.toString()%>
 </table><br/><br/>
-
 </body>
 </html>

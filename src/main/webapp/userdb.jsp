@@ -38,7 +38,7 @@
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>
 <nav>
-    <a href="Home.jsp">HOME </a>
+    <a href="guestHomePage.jsp">HOME </a>
     <a href="displayAvalibleRooms.jsp">ROOMS</a>
 </nav>
 <br><br><br>
@@ -50,6 +50,8 @@
         out.println("Inserted successfully");
     else if(status==-1)
         out.println("Room booked with the given date");
+    else if(status==-2)
+        out.println("Enter valid userid");
     else
         out.println("Insertion failed");
 %>

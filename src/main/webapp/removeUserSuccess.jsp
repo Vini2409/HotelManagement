@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: vinis
-  Date: 11-05-2022
-  Time: 10:53
+  Date: 16-05-2022
+  Time: 18:53
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Validation</title>
+    <title>Remove User</title>
     <style>
         body{
             background-image: url("https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cGxhaW4lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
@@ -25,29 +25,34 @@
             margin:5px;
             border:2px solid navajowhite;
         }
-
+        nav{
+            display:inline-block;
+            margin:10px;
+            padding:5px;
+            float:right;
+            background-color: black;
+        }
     </style>
 </head>
 <body>
-<%@ page import="com.example.task.authendication" %>
+<%@ page import="com.example.task.managerooms" %>
+<%@ page import="com.example.task.manageuser" %>
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>
-<br><br>
-<h1 style="color:white;text-align: center;">LOGIN STATUS</h1><br/><br/>
+<nav>
+    <a href="Home.jsp">HOME </a>
+    <a href="displayAvalibleRooms.jsp">ROOMS</a>
+</nav>
+<br><br><br>
+<h1 style="color:white;text-align: center;">DELETION STATUS</h1><br/><br/>
 <h1>
-<%
-    int status=authendication.login(obj);
-    if(status>0) {
-        out.println("Login credential success");
-        out.println("</br></br>");
-        out.println("<a href='Home.jsp'>GO TO HOME PAGE</a>");
-    }
-    else{
-        out.println("Login credential failed");
-        out.println("</br></br>");
-        out.println("<a href='receptionistLogin.jsp'>LOGIN AGAIN</a>");
-    }
-%>
-
+    <%
+        int status= manageuser.removeuser(obj);
+        if(status>0)
+            out.println("Removed successfully");
+        else
+            out.println("Failed to remove");
+    %>
+</h1>
 </body>
 </html>

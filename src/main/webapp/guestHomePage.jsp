@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: vinis
-  Date: 12-05-2022
-  Time: 22:06
+  Date: 16-05-2022
+  Time: 18:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -30,14 +30,10 @@
 <body>
 <h1 style="font-size: 50px;text-align: center;text-shadow: 2px 2px #F9084A;">HOTEL MANAGEMENT</h1><br><br>
 <h3><a href="booking.jsp">BOOK A ROOM</a></h3>
-<h3><a href="addingrooms.jsp">ADD A ROOM</a></h3>
-<h3><a href="deleteRoom.jsp">DELETE A ROOM</a></h3>
-<h3><a href="updateRoom.jsp">UPDATE A ROOM</a></h3>
 <h3><a href="search.jsp">SEARCH A ROOM BASED ON TYPES</a></h3>
 <h3><a href="searchByDate.jsp">SEARCH ROOM BASED ON DATE</a></h3>
 <h3><a href="displayAvalibleRooms.jsp">DISPLAY AVAILABLE ROOMS</a></h3>
-<h3><a href="displayAllUser.jsp">DISPLAY THE USERS</a></h3>
-<h3><a href="edituserprofile.jsp">EDIT A USER DETAILS</a></h3>
+<h3><a href="edituserprofile.jsp">EDIT YOUR PROFILE</a></h3>
 <h3><a href="cancelBooking.jsp">Cancel Booking</a></h3>
 </body>
 </html>

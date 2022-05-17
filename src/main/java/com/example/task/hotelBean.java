@@ -6,16 +6,20 @@ public class hotelBean {
     String userpass;
     int roomno;
     String clientname;
-    int age;
-    int phoneno;
     int no_of_person;
     String checkin;
     String checkout;
     int ava_room_id;
-    Boolean booked;
     int floor;
     int price;
     String type;
+    String guestname;
+    String guestid;
+    String email;
+    int contactno;
+    String address;
+    String guestpass;
+    Boolean booked;
     public int getUserid() {
         return userid;
     }
@@ -46,21 +50,11 @@ public class hotelBean {
     public void setClientname(String clientname) {
         this.clientname = clientname;
     }
-    public int getAge() {return age;}
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public int getPhoneno() {return phoneno;}
-    public void setPhoneno(int phoneno) {
-        this.phoneno = phoneno;
-    }
     public int getNo_of_person() {return no_of_person;}
     public void setNo_of_person(int no_of_person) {
         this.no_of_person = no_of_person;
     }
-    public String getCheckin() {
-        return checkin;
-    }
+    public String getCheckin() { return checkin; }
     public void setCheckin(String checkin) {
         this.checkin = checkin;
     }
@@ -70,8 +64,6 @@ public class hotelBean {
     public void setCheckout(String checkout) {
         this.checkout = checkout;
     }
-    public boolean getBooked(){return booked;}
-    public void setBooked(Boolean booked){this.booked=booked;}
     public int getAva_room_id(){return ava_room_id;}
     public void setAva_room_id(int ava_room_id){this.ava_room_id=ava_room_id;}
     public int getFloor() {return floor;}
@@ -88,5 +80,42 @@ public class hotelBean {
     public void setType(String type) {
         this.type = type;
     }
-
+    public String getGuestname() {
+        return guestname;
+    }
+    public void setGuestname(String guestname) {
+        this.guestname = guestname;
+    }
+    public String getGuestid() {
+        return guestid;
+    }
+    public void setGuestid(String guestid) {this.guestid = guestid;}
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public int getContactno() {
+        return contactno;
+    }
+    public void setContactno(int contactno) {
+        this.contactno = contactno;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public String getGuestpass() {
+        return guestpass;
+    }
+    public void setGuestpass(String guestpass) {
+        this.guestpass = guestpass;
+    }
+    public Boolean getBooked(){return booked;}
+    public Boolean setBooked(Boolean booked){this.booked = booked;
+        return booked;
+    }
 }

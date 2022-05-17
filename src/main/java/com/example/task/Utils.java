@@ -9,7 +9,6 @@ public class Utils {
     public static Date toDate(String str) throws ParseException {
         return sdf.parse(str);
     }
-
     public static String fromDate(Date date) {
         if (date == null) return "";
         return sdf.format(date);

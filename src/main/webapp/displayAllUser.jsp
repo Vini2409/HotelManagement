@@ -1,16 +1,16 @@
 <%@ page import="com.example.task.hotelBean" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.example.task.usersBooked" %><%--
+<%@ page import="com.example.task.users" %><%--
   Created by IntelliJ IDEA.
   User: vinis
-  Date: 13-05-2022
-  Time: 09:23
+  Date: 16-05-2022
+  Time: 18:59
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Users Booked</title>
+    <title>Users</title>
     <style>
         body{
             background-image: url("https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cGxhaW4lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
@@ -21,7 +21,7 @@
         table{
             font-size:27px;
             border:3px solid white;
-            margin-left:450px;
+            margin-left:300px;
         }
         tr,td{
             border:3px solid white;
@@ -50,22 +50,24 @@
 <body>
 <nav>
     <a href="Home.jsp">HOME </a>
-    <a href="displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="displayBookedUsers.jsp">BOOKED USER</a>
+    <a href="guestSignup.jsp">ADD</a>
+    <a href="removeUser.jsp">REMOVE</a>
 </nav>
 <br><br><br>
 <h1 style="color:white;text-align: center;">USERS BOOKED</h1><br/><br/>
 <br><br>
 <%
 
-    List<hotelBean> list= usersBooked.getAllRecords();
+    List<hotelBean> list= users.getAllUser();
     StringBuilder template = new StringBuilder();
     if(list.size()==0){
-          template.append("<tr>No users have booked</tr>");
+        template.append("<tr>No users have booked</tr>");
     }
     else {
-        template.append("<tr>").append("<td> Room No.</td>").append("<td>Name</td>").append("<td>Age</td>").append("<td>Phone No</td>").append("<td>No_Of_People</td>").append("<td>Check In</td>").append("<td>Check Out</td></tr>\n");
+        template.append("<tr>").append("<td> Name</td>").append("<td>Unique ID</td>").append("<td>Email ID</td>").append("<td>Contact Number</td>").append("<td>Address</td></tr>\n");
         for (hotelBean s : list) {
-            template.append(" <tr><td>").append(s.getRoomno()).append("</td><td>").append(s.getClientname()).append("</td><td>").append(s.getAge()).append("</td><td>").append(s.getPhoneno()).append("</td><td>").append(s.getNo_of_person()).append("</td><td>").append(s.getCheckin()).append("</td><td>").append(s.getCheckout()).append("</td></tr>\n");
+            template.append(" <tr><td>").append(s.getGuestname()).append("</td><td>").append(s.getGuestid()).append("</td><td>").append(s.getEmail()).append("</td><td>").append(s.getContactno()).append("</td><td>").append(s.getAddress()).append("</td></tr>\n");
         }
     }
 %>

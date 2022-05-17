@@ -34,8 +34,6 @@
     <form name="f1" method="post" action="userdb.jsp" id="f1">
         <tr><td>Room Number: </td><td><input style="font-size:25px;" type="number" name="roomno"/></td></tr><br><br>
         <tr><td>User Name: </td><td><input style="font-size:25px;" type="text" name="clientname"/></td></tr><br><br>
-        <tr><td>Age: </td><td><input style="font-size:25px;" type="number" name="age"/></td></tr><br><br>
-        <tr><td>Phone Number: </td><td><input style="font-size:25px;" type="number" name="phoneno" placeholder="1234567890"/></td></tr><br><br>
         <tr><td>No Of Person: </td><td><input style="font-size:25px;" type="number" name="no_of_person"/></td></tr><br><br>
         <tr><td>Check In: </td><td><input style="font-size:25px;" type="date" name="checkin" placeholder="dd-mm-yyy"/></td></tr><br><br>
         <tr><td>Check Out: </td><td><input style="font-size:25px;" type="date" name="checkout" placeholder="dd-mm-yyy"/></td></tr><br><br>

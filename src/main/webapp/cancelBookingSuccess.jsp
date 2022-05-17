@@ -44,7 +44,7 @@
     <a href="displayAvalibleRooms.jsp">ROOMS</a>
 </nav>
 <br><br><br>
-<h1 style="color:white;text-align: center;">DELETION STATUS</h1><br/><br/>
+<h1 style="color:white;text-align: center;">CANCEL BOOKING STATUS</h1><br/><br/>
 <h1>
     <%
         int status= manageuser.cancelBooking(obj);

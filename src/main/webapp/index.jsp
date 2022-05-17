@@ -5,57 +5,45 @@
     <title>JSP - Hello World</title>
     <style>
         body{
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0YrNAgjeaN4M3KtsIL0MDtoXiz8Vh4q_Els8SvX3v3ELg0wj51bOd0HLNEeJtfHpg0yY&usqp=CAU");
+            background-image: url("https://images.unsplash.com/photo-1545403842-6b8149e2759e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80");
             background-repeat: no-repeat;
             background-size: cover;
-            color: white;
+            text-align: center;
+            margin:200px 0px 0px 0px;
+            font-size:50px;
+        }
+        a{
+            text-decoration: none;
+            color:#F9084A;
+            font-weight: bolder;
         }
         table{
-            font-size:30px;
-            margin-left:600px;
+            background: black;
+            margin-left:450px;
+            margin-top:370px;
             padding: 10px;
-            border:3px solid white;
-            box-shadow: 10px 10px 5px white;
-        }
-        td{
-            font-size:25px;
+            color:#F9084A;
+            border:3px solid #F9084A;
+            box-shadow: 10px 10px 5px #F9084A;
         }
     </style>
 </head>
 <body>
-<h1 style="text-align: center;"><%= "LOGIN PAGE" %></h1>
-<br><br><br><br>
-<form method="post" action="validate.jsp">
-
-        <table>
-            <thead>
-            <tr>
-                <th colspan="2">Login Here</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr><td>&nbsp;</td></tr>
-            <tr>
-                <td>UserID: </td>
-                <td><input type="number" name="userid" required/></td>
-            </tr>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" required/></td>
-            </tr>
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="userpass" required/></td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="Login" />
-                    &nbsp;&nbsp;
-                    <input type="reset" value="Reset" />
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-</form>
+<table>
+    <thead>
+    <tr>
+        <th colspan="2">WELCOME</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td><a href="receptionistLogin.jsp">LOGIN AS RECEPTIONIST</a></td>
+    </tr>
+    <tr>
+        <td><a href="guestLogin.jsp">LOGIN AS GUEST</a></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

@@ -12,7 +12,7 @@ public class AvalibleRoom {
         List<hotelBean> list= new ArrayList<>();
         try {
             conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement("select * from room");
+            pst=conn.prepareStatement("select * from room order by ava_room_id");
             ResultSet rs=pst.executeQuery();
             while(rs.next()) {
                 hotelBean u = new hotelBean();
