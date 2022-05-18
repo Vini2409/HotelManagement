@@ -36,8 +36,8 @@ public class authendication {
             pst.setString(5, u.getAddress());
             pst.setString(6,u.getGuestpass());
             status=pst.executeUpdate();
-        }catch(Exception ex){
-            System.out.println(ex);
+        }catch(Exception exe){
+            System.out.println(exe);
         }
         return status;
     }
