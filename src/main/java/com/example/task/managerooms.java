@@ -72,7 +72,6 @@ public class managerooms {
             }
             pst.setInt(params.size()+1, u.getAva_room_id());
             status=pst.executeUpdate();
-            conn.close();
         } catch (SQLException e) {
 //            System.out.println(e);
             e.printStackTrace();

@@ -31,6 +31,7 @@
 <body>
 <%@ page import="com.example.task.managerooms" %>
 <%@ page import="com.example.task.manageuser" %>
+<%@ page import="com.example.task.authendication" %>
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>
 
@@ -38,7 +39,7 @@
 <h1 style="color:white;text-align: center;">CHANGE PASSWORD STATUS</h1><br/><br/>
 <h1>
     <%
-        int status= manageuser.changePassword(obj);
+        int status= authendication.changePassword(obj);
         if(status>0) {
             out.println("Changed Password successfully");
             out.println("</br></br>");

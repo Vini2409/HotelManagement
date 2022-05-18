@@ -139,17 +139,4 @@ public class manageuser {
         }
         return status;
     }
-    public static int changePassword(hotelBean u) {
-        int status=0;
-        try {
-            conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement("update guest set guestpass=? where email=?");
-            pst.setString(1,u.getGuestpass());
-            pst.setString(2, u.getEmail());
-            status=pst.executeUpdate();
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
-        return status;
-    }
 }
