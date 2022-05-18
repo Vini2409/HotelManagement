@@ -47,13 +47,16 @@
 <%
     int status= manageuser.manageuser(obj);
     if(status>0)
-        out.println("Inserted successfully");
-    else if(status==-1)
-        out.println("Room booked with the given date");
+        out.println("Booked successfully");
+    else if(status==-1) {
+        out.println("This room is been booked on the same day.");
+        out.println("<br>");
+        out.println("<a href='booking.jsp'>Book Some other room</a>");
+    }
     else if(status==-2)
         out.println("Enter valid userid");
     else
-        out.println("Insertion failed");
+        out.println("Failed to book");
 %>
 </h1>
 </body>

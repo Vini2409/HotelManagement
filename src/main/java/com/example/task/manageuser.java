@@ -56,7 +56,6 @@ public class manageuser {
             else{
                 return -2;
             }
-            conn.close();
         }catch(Exception ex){
             System.out.println(ex);
         }
@@ -121,7 +120,6 @@ public class manageuser {
             }
             pst.setString(params.size()+1, u.getGuestid());
             status=pst.executeUpdate();
-            conn.close();
         } catch (SQLException e) {
 //            System.out.println(e);
             e.printStackTrace();
@@ -136,7 +134,6 @@ public class manageuser {
             pst=conn.prepareStatement("delete from guest where guestid = ?");
             pst.setString(1,u.getGuestid());
             status=pst.executeUpdate();
-            conn.close();
         }catch(Exception ex){
             System.out.println(ex);
         }
@@ -150,7 +147,6 @@ public class manageuser {
             pst.setString(1,u.getGuestpass());
             pst.setString(2, u.getEmail());
             status=pst.executeUpdate();
-            conn.close();
         }catch(Exception ex){
             System.out.println(ex);
         }

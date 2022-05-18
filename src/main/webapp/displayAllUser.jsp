@@ -55,7 +55,7 @@
     <a href="removeUser.jsp">REMOVE</a>
 </nav>
 <br><br><br>
-<h1 style="color:white;text-align: center;">USERS BOOKED</h1><br/><br/>
+<h1 style="color:white;text-align: center;">USERS</h1><br/><br/>
 <br><br>
 <%
 

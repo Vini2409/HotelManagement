@@ -15,7 +15,6 @@ public class managerooms {
             pst.setInt(3, u.getPrice());
             pst.setString(4,u.getType());
             status=pst.executeUpdate();
-            conn.close();
         }catch(Exception ex){
             System.out.println(ex);
         }
@@ -28,7 +27,6 @@ public class managerooms {
             pst=conn.prepareStatement("delete from room where ava_room_id = ?");
             pst.setInt(1,u.getAva_room_id());
             status=pst.executeUpdate();
-            conn.close();
         }catch(Exception ex){
             System.out.println(ex);
         }

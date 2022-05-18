@@ -31,9 +31,6 @@ public class search {
             query += "type = ?";
             params.add(u.getType());
         }
-//        if (params.size() < 1) {
-//            return -1;
-//        }
         System.out.println(query);
         System.out.println(params.size());
         try {
@@ -56,9 +53,7 @@ public class search {
                 a.setType(rs.getString("type"));
                 list.add(a);
             }
-            conn.close();
         } catch (SQLException e) {
-//            System.out.println(e);
             e.printStackTrace();
         }
         return list;

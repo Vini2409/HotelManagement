@@ -22,7 +22,6 @@ public class AvalibleRoom {
                 u.setType(rs.getString("type"));
                 list.add(u);
             }
-            conn.close();
         }catch(Exception ex){
             System.out.println(ex);
         }

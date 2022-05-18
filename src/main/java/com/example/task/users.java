@@ -26,7 +26,6 @@ public class users {
                 u.setCheckout(Utils.fromDate(rs.getDate("checkout")));
                 list.add(u);
             }
-            conn.close();
         }catch(Exception ex){
             ex.printStackTrace();
         }
@@ -47,7 +46,6 @@ public class users {
                 u.setAddress(rs.getString("address"));
                 list.add(u);
             }
-            conn.close();
         }catch(Exception ex){
             ex.printStackTrace();
         }

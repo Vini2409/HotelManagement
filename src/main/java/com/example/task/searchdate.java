@@ -32,7 +32,6 @@ public class searchdate {
             }
             pst=conn.prepareStatement("update room set booked=false");
             pst.executeUpdate();
-            conn.close();
             } catch (SQLException e) {
 //            System.out.println(e);
                 e.printStackTrace();
