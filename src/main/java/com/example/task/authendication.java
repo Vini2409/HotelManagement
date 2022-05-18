@@ -27,7 +27,7 @@ public class authendication {
     public static int signup(hotelBean u){
         int status=0;
         try{
-            conn=ConnectionProvider.getCon();
+            conn = ConnectionProvider.getCon();
             pst=conn.prepareStatement("insert into guest values(?,?,?,?,?,?)");
             pst.setString(1,u.getGuestname());
             pst.setString(2, u.getGuestid());
