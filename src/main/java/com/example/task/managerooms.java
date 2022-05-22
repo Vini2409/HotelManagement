@@ -76,7 +76,6 @@ public class managerooms {
 //            System.out.println(e);
             e.printStackTrace();
         }
-
         return status;
     }
 }

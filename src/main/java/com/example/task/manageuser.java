@@ -9,10 +9,10 @@ public class manageuser {
         int status=0;
         try {
             conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement("select * from guest where guestid=?");
-            pst.setString(1, u.getClientname());
-            ResultSet re=pst.executeQuery();
-            if(re.next()) {
+//            pst=conn.prepareStatement("select * from guest where guestid=?");
+//            pst.setString(1, u.getClientname());
+//            ResultSet re=pst.executeQuery();
+//            if(re.next()) {
                 pst = conn.prepareStatement("select* from bookingroom where roomno=?");
                 pst.setInt(1, u.getRoomno());
                 ResultSet rs = pst.executeQuery();
@@ -39,6 +39,7 @@ public class manageuser {
                     }
 
                 } else {
+                    System.out.println(u.getRoomno());
                     pst = conn.prepareStatement("select * from room where ava_room_id=?");
                     pst.setInt(1, u.getRoomno());
                     ResultSet sr = pst.executeQuery();
@@ -52,10 +53,10 @@ public class manageuser {
                         status = pst.executeUpdate();
                     }
                 }
-            }
-            else{
-                return -2;
-            }
+//            }
+//            else{
+//                return -2;
+//            }
         }catch(Exception ex){
             System.out.println(ex);
         }
@@ -65,7 +66,7 @@ public class manageuser {
         int status=0;
         try {
             conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement("delete from bookingroom where clientname = ? AND roomno=?");
+            pst=conn.prepareStatement("delete from bookingroom where clientname = ? AND roomno = ?");
             pst.setString(1,u.getClientname());
             pst.setInt(2,u.getRoomno());
             status=pst.executeUpdate();
@@ -127,12 +128,77 @@ public class manageuser {
 
         return status;
     }
+    public static int updateProfileMember(hotelBean u) {
+        int status=0;
+        String query = "update member set ";
+        ArrayList<Object> params = new ArrayList<>();
+        boolean isAlreadyAdded = false;
+        if (u.getMembername() != null) {
+            query += "membername = ?";
+            params.add(u.getMembername());
+            isAlreadyAdded = true;
+        }
+        if (u.getMemberemail() != null) {
+            if (isAlreadyAdded) query += ", ";
+            query += "memberemail = ?";
+            params.add(u.getMemberemail());
+            isAlreadyAdded = true;
+        }
+        if (u.getMembercontactno() != 0) {
+            if (isAlreadyAdded) query += ", ";
+            query += "membercontactno = ?";
+            params.add(u.getMembercontactno());
+            isAlreadyAdded = true;
+        }
+        if (u.getMemberaddress() != null) {
+            if (isAlreadyAdded) query += ", ";
+            query += "memberaddress = ?";
+            params.add(u.getMemberaddress());
+        }
+        query += " where memberid = ?";
+        if (params.size() < 1) {
+            return -1;
+        }
+        System.out.println(query);
+        try {
+            conn=ConnectionProvider.getCon();
+            pst=conn.prepareStatement(query);
+            for (int i = 0; i < params.size(); i++) {
+                Object param = params.get(i);
+                if (param instanceof String) {
+                    pst.setString(i+1, (String) param);
+                } else {
+                    pst.setInt(i+1, (Integer) param);
+                }
+            }
+            pst.setString(params.size()+1, u.getMemberid());
+            status=pst.executeUpdate();
+        } catch (SQLException e) {
+//            System.out.println(e);
+            e.printStackTrace();
+        }
+
+        return status;
+    }
     public static int removeuser(hotelBean u) {
         int status=0;
         try {
             conn=ConnectionProvider.getCon();
             pst=conn.prepareStatement("delete from guest where guestid = ?");
             pst.setString(1,u.getGuestid());
+            status=pst.executeUpdate();
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+        return status;
+    }
+    public static int removeMember(hotelBean u) {
+        int status=0;
+        try {
+            System.out.println(u.getMemberid());
+            conn=ConnectionProvider.getCon();
+            pst=conn.prepareStatement("delete from member where memberid = ?");
+            pst.setString(1,u.getMemberid());
             status=pst.executeUpdate();
         }catch(Exception ex){
             System.out.println(ex);

@@ -22,7 +22,7 @@ public class search {
         }
         if (u.getPrice() != 0) {
             if (isAlreadyAdded) query += " and ";
-            query += "price = ?";
+            query += "price <= ?";
             params.add(u.getPrice());
             isAlreadyAdded = true;
         }
@@ -31,6 +31,7 @@ public class search {
             query += "type = ?";
             params.add(u.getType());
         }
+        query+=" order by ava_room_id";
         System.out.println(query);
         System.out.println(params.size());
         try {

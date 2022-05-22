@@ -14,7 +14,7 @@
         }
         a{
             text-decoration: none;
-            color:#F9084A;
+            color: #A89166;
             font-weight: bolder;
         }
         table{
@@ -22,9 +22,9 @@
             margin-left:450px;
             margin-top:370px;
             padding: 10px;
-            color:#F9084A;
-            border:3px solid #F9084A;
-            box-shadow: 10px 10px 5px #F9084A;
+            color: #A89166;
+            border:3px solid #A89166;
+            box-shadow: 10px 10px 5px #A89166;
         }
     </style>
 </head>
@@ -36,13 +36,19 @@
     </tr>
     </thead>
     <tbody>
-    <tr><td>&nbsp;</td></tr>
+    <tr><td><hr></td></tr>
     <tr>
-        <td><a href="receptionistLogin.jsp">LOGIN AS RECEPTIONIST</a></td>
+        <td><a href="receptionist/receptionistLogin.jsp">LOGIN AS RECEPTIONIST</a></td>
     </tr>
+
     <tr>
-        <td><a href="guestLogin.jsp">LOGIN AS GUEST</a></td>
+        <td><a href="member/memberLogin.jsp">LOGIN AS MEMBER</a></td>
     </tr>
+
+    <tr>
+        <td><a href="user/guestLogin.jsp">LOGIN AS GUEST</a></td>
+    </tr>
+
     </tbody>
 </table>
 </body>

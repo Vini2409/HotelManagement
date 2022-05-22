@@ -20,6 +20,12 @@ public class hotelBean {
     String address;
     String guestpass;
     Boolean booked;
+    String membername;
+    String memberid;
+    String memberemail;
+    int membercontactno;
+    String memberaddress;
+
     public int getUserid() {
         return userid;
     }
@@ -108,14 +114,32 @@ public class hotelBean {
     public void setAddress(String address) {
         this.address = address;
     }
-    public String getGuestpass() {
-        return guestpass;
-    }
+    public String getGuestpass() {return guestpass;}
     public void setGuestpass(String guestpass) {
         this.guestpass = guestpass;
     }
     public Boolean getBooked(){return booked;}
-    public Boolean setBooked(Boolean booked){this.booked = booked;
-        return booked;
+    public Boolean setBooked(Boolean booked){this.booked = booked;return booked;}
+    public String getMembername() {
+        return membername;
+    }
+    public void setMembername(String membername) {
+        this.membername = membername;
+    }
+    public String getMemberid() {return memberid;}
+    public void setMemberid(String memberid) {this.memberid = memberid;}
+    public String getMemberemail() {
+        return memberemail;
+    }
+    public void setMemberemail(String memberemail) {this.memberemail = memberemail;}
+    public int getMembercontactno() {return membercontactno;}
+    public void setMembercontactno(int membercontactno) {
+        this.membercontactno = membercontactno;
+    }
+    public String getMemberaddress() {
+        return memberaddress;
+    }
+    public void setMemberaddress(String memberaddress) {
+        this.memberaddress = memberaddress;
     }
 }
