@@ -26,22 +26,14 @@
     margin:5px;
     border:2px solid navajowhite;
   }
-  nav{
-    display:inline-block;
-    margin:10px;
-    padding:5px;
-    float:right;
-    background-color: black;
-  }
+
 </style>
 </head>
 <body>
 <%@ page import="com.example.task.authendication" %>
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>
-<nav>
-  <a href="userHomePage.jsp">HOME </a>
-</nav>
+
 <br><br><br>
 <h1 style="color:white;text-align: center;">SIGN UP STATUS</h1><br/><br/>
 
@@ -49,6 +41,8 @@
     int status=authendication.signup(obj);
     if(status>0) {
         out.println("SignUp credential success");
+        out.println("<br><br>");
+        out.println("<a href='HomePage.jsp'>GO TO Home PAGE</a>");
     }
     else
         out.println("SignUp credential failed");

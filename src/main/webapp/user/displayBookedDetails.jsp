@@ -29,7 +29,7 @@
 <table>
 <form method="post" action="BookingDetails.jsp">
     <tr><td>USER NAME: </td><td><input style="font-size:20px;" type="text" name="guestid" readonly="readonly" value=${sessionScope.validid}></td></tr><br><br>
-    <tr><td><input style="font-size:25px;margin-left:150px;margin-top:50px;padding:5px;background-color: lightcyan;" type="submit" value="SUBMIT"/></td></tr>
+    <tr><td><input style="font-size:25px;margin-left:150px;margin-top:50px;padding:5px;background-color: lightcyan;" type="submit" value="VIEW DETAILS"/></td></tr>
 </form>
 </table>
 </body>

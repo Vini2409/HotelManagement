@@ -9,10 +9,7 @@ public class manageuser {
         int status=0;
         try {
             conn=ConnectionProvider.getCon();
-//            pst=conn.prepareStatement("select * from guest where guestid=?");
-//            pst.setString(1, u.getClientname());
-//            ResultSet re=pst.executeQuery();
-//            if(re.next()) {
+            System.out.println(Date.valueOf(u.getCheckin()));
                 pst = conn.prepareStatement("select* from bookingroom where roomno=?");
                 pst.setInt(1, u.getRoomno());
                 ResultSet rs = pst.executeQuery();
@@ -29,13 +26,7 @@ public class manageuser {
                     if (rq.next()) {
                         return -1;
                     } else {
-                            pst = conn.prepareStatement("insert into bookingroom(roomno,clientname,no_of_person,checkin,checkout) values(?,?,?,?,?)");
-                            pst.setInt(1, u.getRoomno());
-                            pst.setString(2, u.getClientname());
-                            pst.setInt(3, u.getNo_of_person());
-                            pst.setDate(4, Date.valueOf(u.getCheckin()));
-                            pst.setDate(5, Date.valueOf(u.getCheckout()));
-                            status = pst.executeUpdate();
+                            status = sqlFunction.bookinRoom(u.getRoomno(),u.getClientname(),u.getNo_of_person(),Date.valueOf(u.getCheckin()),Date.valueOf(u.getCheckout()));
                     }
 
                 } else {
@@ -44,165 +35,141 @@ public class manageuser {
                     pst.setInt(1, u.getRoomno());
                     ResultSet sr = pst.executeQuery();
                     if (sr.next()) {
-                        pst = conn.prepareStatement("insert into bookingroom(roomno,clientname,no_of_person,checkin,checkout) values(?,?,?,?,?)");
-                        pst.setInt(1, u.getRoomno());
-                        pst.setString(2, u.getClientname());
-                        pst.setInt(3, u.getNo_of_person());
-                        pst.setDate(4, Date.valueOf(u.getCheckin()));
-                        pst.setDate(5, Date.valueOf(u.getCheckout()));
-                        status = pst.executeUpdate();
+                        status = sqlFunction.bookinRoom(u.getRoomno(),u.getClientname(),u.getNo_of_person(),Date.valueOf(u.getCheckin()),Date.valueOf(u.getCheckout()));
                     }
                 }
-//            }
-//            else{
-//                return -2;
-//            }
+                excel.excel(u.getRoomno(),u.getClientname(),u.getNo_of_person(),Date.valueOf(u.getCheckin()),Date.valueOf(u.getCheckout()));
+//                excel.selectall();
         }catch(Exception ex){
             System.out.println(ex);
         }
         return status;
     }
     public static int cancelBooking(hotelBean u) {
-        int status=0;
-        try {
-            conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement("delete from bookingroom where clientname = ? AND roomno = ?");
-            pst.setString(1,u.getClientname());
-            pst.setInt(2,u.getRoomno());
-            status=pst.executeUpdate();
-            conn.close();
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        int status=sqlFunction.cancelBooking(u.getClientname(),u.getRoomno());
         return status;
     }
     public static int updateProfile(hotelBean u) {
         int status=0;
-        String query = "update guest set ";
-        ArrayList<Object> params = new ArrayList<>();
-        boolean isAlreadyAdded = false;
-        if (u.getGuestname() != null) {
-            query += "guestname = ?";
-            params.add(u.getGuestname());
-            isAlreadyAdded = true;
-        }
-        if (u.getEmail() != null) {
-            if (isAlreadyAdded) query += ", ";
-            query += "email = ?";
-            params.add(u.getEmail());
-            isAlreadyAdded = true;
-        }
-        if (u.getContactno() != 0) {
-            if (isAlreadyAdded) query += ", ";
-            query += "contactno = ?";
-            params.add(u.getContactno());
-            isAlreadyAdded = true;
-        }
-        if (u.getAddress() != null) {
-            if (isAlreadyAdded) query += ", ";
-            query += "address = ?";
-            params.add(u.getAddress());
-        }
-        query += " where guestid = ?";
-        if (params.size() < 1) {
-            return -1;
-        }
-        System.out.println(query);
         try {
-            conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement(query);
-            for (int i = 0; i < params.size(); i++) {
-                Object param = params.get(i);
-                if (param instanceof String) {
-                    pst.setString(i+1, (String) param);
-                } else {
-                    pst.setInt(i+1, (Integer) param);
+            conn = ConnectionProvider.getCon();
+            ArrayList<Object> params = new ArrayList<>();
+            String query="";
+            pst = conn.prepareStatement("select guestid from guest where guestid = ?");
+            pst.setString(1, u.getGuestid());
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                query = "update guest set ";
+//                ArrayList<Object> params = new ArrayList<>();
+                boolean isAlreadyAdded = false;
+                if (u.getGuestname() != null) {
+                    query += "guestname = ?";
+                    params.add(u.getGuestname());
+                    isAlreadyAdded = true;
                 }
-            }
-            pst.setString(params.size()+1, u.getGuestid());
-            status=pst.executeUpdate();
-        } catch (SQLException e) {
-//            System.out.println(e);
-            e.printStackTrace();
-        }
-
-        return status;
-    }
-    public static int updateProfileMember(hotelBean u) {
-        int status=0;
-        String query = "update member set ";
-        ArrayList<Object> params = new ArrayList<>();
-        boolean isAlreadyAdded = false;
-        if (u.getMembername() != null) {
-            query += "membername = ?";
-            params.add(u.getMembername());
-            isAlreadyAdded = true;
-        }
-        if (u.getMemberemail() != null) {
-            if (isAlreadyAdded) query += ", ";
-            query += "memberemail = ?";
-            params.add(u.getMemberemail());
-            isAlreadyAdded = true;
-        }
-        if (u.getMembercontactno() != 0) {
-            if (isAlreadyAdded) query += ", ";
-            query += "membercontactno = ?";
-            params.add(u.getMembercontactno());
-            isAlreadyAdded = true;
-        }
-        if (u.getMemberaddress() != null) {
-            if (isAlreadyAdded) query += ", ";
-            query += "memberaddress = ?";
-            params.add(u.getMemberaddress());
-        }
-        query += " where memberid = ?";
-        if (params.size() < 1) {
-            return -1;
-        }
-        System.out.println(query);
-        try {
-            conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement(query);
-            for (int i = 0; i < params.size(); i++) {
-                Object param = params.get(i);
-                if (param instanceof String) {
-                    pst.setString(i+1, (String) param);
-                } else {
-                    pst.setInt(i+1, (Integer) param);
+                if (u.getEmail() != null) {
+                    if (isAlreadyAdded) query += ", ";
+                    query += "email = ?";
+                    params.add(u.getEmail());
+                    isAlreadyAdded = true;
                 }
+                if (u.getContactno() != 0) {
+                    if (isAlreadyAdded) query += ", ";
+                    query += "contactno = ?";
+                    params.add(u.getContactno());
+                    isAlreadyAdded = true;
+                }
+                if (u.getAddress() != null) {
+                    if (isAlreadyAdded) query += ", ";
+                    query += "address = ?";
+                    params.add(u.getAddress());
+                }
+                query += " where guestid = ?";
+                if (params.size() < 1) {
+                    return -1;
+                }
+                System.out.println(query);
+//
+            }else {
+                query = "update member set ";
+//                ArrayList<Object> params = new ArrayList<>();
+                boolean isAlreadyAdded = false;
+                if (u.getGuestname() != null) {
+                    query += "membername = ?";
+                    params.add(u.getGuestname());
+                    isAlreadyAdded = true;
+                }
+                if (u.getEmail() != null) {
+                    if (isAlreadyAdded) query += ", ";
+                    query += "memberemail = ?";
+                    params.add(u.getEmail());
+                    isAlreadyAdded = true;
+                }
+                if (u.getContactno() != 0) {
+                    if (isAlreadyAdded) query += ", ";
+                    query += "membercontactno = ?";
+                    params.add(u.getContactno());
+                    isAlreadyAdded = true;
+                }
+                if (u.getAddress() != null) {
+                    if (isAlreadyAdded) query += ", ";
+                    query += "memberaddress = ?";
+                    params.add(u.getAddress());
+                }
+                query += " where memberid = ?";
+                if (params.size() < 1) {
+                    return -1;
+                }
+                System.out.println(query);
             }
-            pst.setString(params.size()+1, u.getMemberid());
-            status=pst.executeUpdate();
-        } catch (SQLException e) {
-//            System.out.println(e);
-            e.printStackTrace();
+                try{
+                    conn = ConnectionProvider.getCon();
+                    pst = conn.prepareStatement(query);
+                    for (int i = 0; i < params.size(); i++) {
+                        Object param = params.get(i);
+                        if (param instanceof String) {
+                            pst.setString(i + 1, (String) param);
+                        } else {
+                            pst.setInt(i + 1, (Integer) param);
+                        }
+                    }
+                    pst.setString(params.size() + 1, u.getGuestid());
+                    status = pst.executeUpdate();
+                } catch (SQLException e) {
+//           System.out.println(e);
+                    e.printStackTrace();
+                }
+        }catch(SQLException ec){
+            ec.printStackTrace();
         }
-
         return status;
     }
     public static int removeuser(hotelBean u) {
         int status=0;
-        try {
-            conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement("delete from guest where guestid = ?");
-            pst.setString(1,u.getGuestid());
-            status=pst.executeUpdate();
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        status = sqlFunction.user("guest",u.getGuestid());
         return status;
     }
     public static int removeMember(hotelBean u) {
         int status=0;
-        try {
-            System.out.println(u.getMemberid());
-            conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement("delete from member where memberid = ?");
-            pst.setString(1,u.getMemberid());
-            status=pst.executeUpdate();
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        status=sqlFunction.member("member",u.getMemberid());
+        return status;
+    }
+    public static int changeUserToMember(hotelBean u) {
+        int status=0;
+        sqlFunction.changeUserToMember(u.getGuestid());
+        status=sqlFunction.user("guest",u.getGuestid());
+        System.out.println(status);
+        return status;
+    }
+    public static int changeMemberToUser(hotelBean u) {
+        int status=0;
+        sqlFunction.changeMemberToUser(u.getMemberid());
+        status=sqlFunction.member("member",u.getMemberid());
+        System.out.println(status);
+        return status;
+    }
+    public static int checkIfUser(hotelBean u,String id) {
+        int status = sqlFunction.checkIfUser("guest",id);
         return status;
     }
 }

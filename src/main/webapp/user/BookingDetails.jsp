@@ -1,16 +1,14 @@
-<%@ page import="com.example.task.searchdate" %>
-<%@ page import="com.example.task.hotelBean" %>
-<%@ page import="java.util.List" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: vinis
-  Date: 17-05-2022
-  Time: 12:23
+  Date: 20-05-2022
+  Time: 15:11
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Search</title>
+    <title>Booking Details</title>
     <style>
         body{
             background-image: url("https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cGxhaW4lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
@@ -18,11 +16,9 @@
             font-size:30px;
         }
         /*table{*/
-        /*    display:grid;*/
-        /*    grid-template-columns: auto auto auto;*/
         /*    font-size:27px;*/
         /*    border:3px solid white;*/
-        /*    margin-left:570px;*/
+        /*    margin-left:300px;*/
         /*}*/
         /*tr,td{*/
         /*    border:3px solid white;*/
@@ -61,7 +57,7 @@
             size:20px;
             padding:20px;
             border-radius: 8px;
-            background-color: green;
+            background-color: red;
             color:white;
             cursor:pointer;
             margin:3px;
@@ -72,32 +68,38 @@
     </style>
 </head>
 <body>
-<nav>
-    <a href="../member/displayAvalibleRooms.jsp">ROOMS</a>
-</nav>
-<br><br><br>
-<h1 style="color:white;text-align: center;">SEARCH RESULT</h1><br/>
-
+<%@ page import="com.example.task.managerooms" %>
+<%@ page import="com.example.task.users" %>
+<%@ page import="com.example.task.hotelBean" %>
+<%@ page import="java.util.List" %>
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>
-
+<nav>
+    <a href="HomePage.jsp">HOME </a>
+    <a href="displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="../common/logout.jsp">LOGOUT</a>
+</nav>
+<br><br><br>
+<h1 style="color:white;text-align: center;">BOOKED DETAILS</h1><br/><br/>
 <%
-    List<hotelBean> list= searchdate.roomsearchByDate(obj);
+
+    List<hotelBean> list= users.getBookingDetails(obj);
     StringBuilder template = new StringBuilder();
+
     if(list.size()==0){
-        template.append("<tr>No Rooms with the given specification. Check the available rooms</tr>");
+        template.append("<tr>No users have booked</tr>");
     }
     else {
         for (hotelBean s : list) {
-            template.append("<form action=booking.jsp method='post' >");
+            template.append("<form action=cancelBooking.jsp method='post' >");
             template.append("<div class=styling>");
-            template.append("ROOM NUMBER: ").append(s.getAva_room_id()).append("<br>Floor: ").append(s.getFloor()).append("</br>Price: ").append(s.getPrice()).append("</br>Type: ").append(s.getType()).append("<center>").append("</br><Button name='1234' value=").append(s.getAva_room_id()).append(">BOOK THIS ROOM</Button></center></div>");
+            template.append("Room Number: ").append(s.getRoomno()).append("</br>Name: ").append(s.getClientname()).append("<input type=hidden name='gid' value=").append(s.getClientname()).append(">").append("</br>Check In Date: ").append(s.getCheckin()).append("</br>Check Out Date: ").append(s.getCheckout()).append("<center>").append("</br><Button name='1234' value=").append(s.getRoomno()).append(">CANCEL BOOKING</Button></center></div>");
+//            template.append(" <tr><td>").append(s.getRoomno()).append("</td><td>").append(s.getClientname()).append("</td><td>").append(s.getEmail()).append("</td><td>").append(s.getContactno()).append("</td><td>").append(s.getNo_of_person()).append("</td><td>").append(s.getCheckin()).append("</td><td>").append(s.getCheckout()).append("</td></tr>\n");
         }
-        template.append("</form>");
     }
 %>
 <table>
     <%=template.toString()%>
-</table><br/><br/>
+</table>
 </body>
 </html>

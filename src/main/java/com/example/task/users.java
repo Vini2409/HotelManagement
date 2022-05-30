@@ -20,8 +20,6 @@ public class users {
                 hotelBean u = new hotelBean();
                 u.setRoomno(rs.getInt("roomno"));
                 u.setClientname(rs.getString("clientname"));
-//                u.setEmail(rs.getString("email"));
-//                u.setContactno(rs.getInt("contactno"));
                 u.setNo_of_person(rs.getInt("no_of_person"));
                 u.setCheckin(Utils.fromDate(rs.getDate("checkin")));
                 u.setCheckout(Utils.fromDate(rs.getDate("checkout")));

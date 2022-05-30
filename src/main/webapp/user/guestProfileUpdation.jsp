@@ -39,7 +39,8 @@
 <jsp:setProperty property="*" name="obj"/>
 <nav>
     <a href="../receptionist/Home.jsp">HOME </a>
-    <a href="../member/displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="../common/logout.jsp">LOGOUT</a>
 </nav>
 <br><br><br>
 <h1 style="color:white;text-align: center;">UPDATION STATUS</h1><br/><br/>

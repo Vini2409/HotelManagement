@@ -72,7 +72,8 @@
 <body>
 <nav>
     <a href="Home.jsp">HOME </a>
-    <a href="../member/displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="../user/displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="../common/logout.jsp">LOGOUT</a>
 </nav>
 <br><br><br>
 <h1 style="color:white;text-align: center;">USERS BOOKED</h1><br/><br/>

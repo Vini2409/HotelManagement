@@ -1,16 +1,13 @@
 package com.example.task;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class search {
+public class Search {
     static Connection conn;
     static PreparedStatement pst;
     public static List<hotelBean> roomsearch(hotelBean u) {
-        int status=0;
+        System.out.println("Hello");
         String query = "select * from room where ";
         ArrayList<Object> params = new ArrayList<>();
         List<hotelBean> list= new ArrayList<>();
@@ -28,9 +25,17 @@ public class search {
         }
         if (u.getType() != null) {
             if (isAlreadyAdded) query += " and ";
-            query += "type = ?";
+            query += "type = ? ";
             params.add(u.getType());
+            isAlreadyAdded = true;
         }
+        if(u.getCheckout()!=null && u.getCheckin()!=null){
+            sqlFunction.search(Date.valueOf(u.getCheckin()),Date.valueOf(u.getCheckout()));
+            System.out.println(u.getCheckin()+"+");
+            if(isAlreadyAdded) query += " and ";
+            query+="booked = false";
+        }
+
         query+=" order by ava_room_id";
         System.out.println(query);
         System.out.println(params.size());
@@ -54,6 +59,8 @@ public class search {
                 a.setType(rs.getString("type"));
                 list.add(a);
             }
+            pst=conn.prepareStatement("update room set booked=false");
+            pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

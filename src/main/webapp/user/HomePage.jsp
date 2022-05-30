@@ -1,13 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: vinis
-  Date: 21-05-2022
-  Time: 19:00
+  Date: 16-05-2022
+  Time: 18:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <title>Home</title>
     <style>
         body{
             background-image:url("https://images.unsplash.com/photo-1568084680786-a84f91d1153c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aG90ZWwlMjBtYW5hZ2VtZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500");
@@ -45,11 +46,12 @@
 </head>
 <body>
 <nav>
-    <a href="userSearchOnDate.jsp">SEARCH ON DATE</a>
-    <a href="../common/displayBookedDetails.jsp">BOOKING DETAILS</a>
+    <a href="../common/bookARoom.jsp">BOOK A ROOM</a>
+    <a href="displayAvalibleRooms.jsp">DISPLAY ALL ROOMS</a>
+    <a href="../common/search.jsp">SEARCH</a>
+    <a href="displayBookedDetails.jsp">BOOKING DETAILS</a>
     <a href="edituserprofile.jsp">EDIT</a>
     <a href="../common/logout.jsp">LOGOUT</a>
-</nav><br><br><br><br><br>
-<h1 style="text-align:center;">WELCOME <%=session.getAttribute("validid")%>! TO THIS HOTEL WEBPAGE</h1>
+</nav>
 </body>
 </html>

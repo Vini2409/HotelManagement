@@ -78,11 +78,3 @@
 </body>
 </html>
 
-<%--
-  Created by IntelliJ IDEA.
-  User: vinis
-  Date: 16-05-2022
-  Time: 11:45
-  To change this template use File | Settings | File Templates.
---%>
-

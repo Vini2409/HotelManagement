@@ -42,8 +42,8 @@
         out.println("Login credential success");
         out.println("</br></br>");
         session.setAttribute("validid",obj.getGuestid());
-//        out.println(template.append("<form action=memberHomePage.jsp>").append("<Button name='gname' value=").append(obj.getGuestid()).append(">GO TO HOME PAGE</input>"));
-        out.println("<a href='userHomePage.jsp'>GO TO Home PAGE</a>");
+//        out.println(template.append("<form action=HomePage.jsp>").append("<Button name='gname' value=").append(obj.getGuestid()).append(">GO TO HOME PAGE</input>"));
+        out.println("<a href='HomePage.jsp'>GO TO Home PAGE</a>");
     }
     else {
         out.println("Login credential failed");

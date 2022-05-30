@@ -44,16 +44,11 @@
 
 <h1 style="font-size: 50px;text-align: center;text-shadow: 2px 2px #F9084A;">HOTEL MANAGEMENT</h1><br><br>
 <div class="grids">
-<div class="styling"><h3><a href="../common/booking.jsp">BOOK A ROOM</a></h3></div>
-<div class="styling"><h3><a href="addingrooms.jsp">ADD A ROOM</a></h3></div>
-<div class="styling"><h3><a href="deleteRoom.jsp">DELETE A ROOM</a></h3></div>
-<div class="styling"><h3><a href="updateRoom.jsp">UPDATE A ROOM</a></h3></div>
-<div class="styling"><h3><a href="../common/search.jsp">SEARCH A ROOM BASED ON TYPES</a></h3></div>
-<div class="styling"><h3><a href="../common/searchByDate.jsp">SEARCH ROOM BASED ON DATE</a></h3></div>
-<div class="styling"><h3><a href="displayRoomRecep.jsp">DISPLAY AVAILABLE ROOMS</a></h3></div>
-<div class="styling"><h3><a href="displayAllUser.jsp">DISPLAY THE USERS</a></h3></div>
-<div class="styling"><h3><a href="../user/edituserprofile.jsp">EDIT A USER DETAILS</a></h3></div>
-    <div class="styling"><h3><a href="../common/cancelBooking.jsp">Cancel Booking</a></h3></div>
+    <div class="styling"><h3><a href="../common/bookARoom.jsp">BOOK A ROOM</a></h3></div>
+    <div class="styling"><h3><a href="../common/search.jsp">SEARCH ROOMS BASED ON CONDITIONS</a></h3></div>
+    <div class="styling"><h3><a href="displayRoomRecep.jsp">DISPLAY AVAILABLE ROOMS</a></h3></div>
+    <div class="styling"><h3><a href="../common/cancelBooking.jsp">CANCEL BOOKING OF USERS</a></h3></div>
+    <div class="styling"><h3><a href="displayAllUser.jsp">DISPLAY ALL THE USERS</a></h3></div>
     <div class="styling"><h3><a href="../common/logout.jsp">LOGOUT</a></h3></div>
 </div>
 </body>

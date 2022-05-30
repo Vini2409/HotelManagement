@@ -38,20 +38,21 @@
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>
 <nav>
-    <a href="../member/memberHomePage.jsp">HOME </a>
-    <a href="../member/displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="../user/HomePage.jsp">HOME </a>
+    <a href="../user/displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="logout.jsp">LOGOUT</a>
 </nav>
 <br><br><br>
-<h1 style="color:white;text-align: center;">BOOKING STATUS</h1><br/><br/>
+<h1 style="color:white;text-align: center;">BOOKING STATUS</h1>
 <h1>
 <%
     int status= manageuser.manageuser(obj);
     if(status>0)
         out.println("Booked successfully");
     else if(status==-1) {
-        out.println("This room is been booked on the same day.");
-        out.println("<br>");
-        out.println("<a href='booking.jsp'>Book Some other room</a>");
+        out.println("This room has been booked on the same days.Search by date to book a best room");
+        out.println("<br><br>");
+        out.println("<a href='search.jsp'>Book Some other room</a>");
     }
     else if(status==-2)
         out.println("Enter valid userid");

@@ -7,29 +7,12 @@ public class managerooms {
     static PreparedStatement pst;
     public static int insertroom(hotelBean u) {
         int status=0;
-        try {
-            conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement("insert into room values(?,?,?,?)");
-            pst.setInt(1,u.getAva_room_id());
-            pst.setInt(2, u.getFloor());
-            pst.setInt(3, u.getPrice());
-            pst.setString(4,u.getType());
-            status=pst.executeUpdate();
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        status = sqlFunction.insertRoom("room",u.getAva_room_id(),u.getFloor(),u.getPrice(),u.getType());
         return status;
     }
     public static int deleteroom(hotelBean u) {
         int status=0;
-        try {
-            conn=ConnectionProvider.getCon();
-            pst=conn.prepareStatement("delete from room where ava_room_id = ?");
-            pst.setInt(1,u.getAva_room_id());
-            status=pst.executeUpdate();
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        status=sqlFunction.deleteQuery("room",u.getAva_room_id());
         return status;
     }
 

@@ -27,11 +27,11 @@
 </head>
 <body>
 <table>
-<form name="f1" method="post" action="deleteSuccess.jsp" id="f1">
+<form method="post" action="deleteSuccess.jsp" id="f1">
     <%
         if(request.getParameter("del")!=null){
     %>
-    <tr><td>Room Number: </td><td><input style="font-size:25px;" type="number" name="roomno" readonly="readonly" value=<%=request.getParameter("del")%> ></td></tr><br><br>
+    <tr><td>Room Number: </td><td><input style="font-size:25px;" type="number" name="ava_room_id" readonly="readonly" value=<%=request.getParameter("del")%> ></td></tr><br><br>
     <%
     }else{
     %>

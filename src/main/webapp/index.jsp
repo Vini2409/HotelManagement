@@ -40,11 +40,6 @@
     <tr>
         <td><a href="receptionist/receptionistLogin.jsp">LOGIN AS RECEPTIONIST</a></td>
     </tr>
-
-    <tr>
-        <td><a href="member/memberLogin.jsp">LOGIN AS MEMBER</a></td>
-    </tr>
-
     <tr>
         <td><a href="user/guestLogin.jsp">LOGIN AS GUEST</a></td>
     </tr>

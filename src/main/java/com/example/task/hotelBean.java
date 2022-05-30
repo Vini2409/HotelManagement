@@ -25,7 +25,17 @@ public class hotelBean {
     String memberemail;
     int membercontactno;
     String memberaddress;
+    String loginName;
+    String loginPassword;
 
+    public String getRoomString() {
+        return "{" +
+                "\"ava_room_id\":" + ava_room_id + ","+
+                "\"floor\":" + floor +","+
+                "\"price\":"+ price+","+
+                "\"type\":\""+type+"\""+
+                "}";
+    }
     public int getUserid() {
         return userid;
     }
@@ -92,9 +102,7 @@ public class hotelBean {
     public void setGuestname(String guestname) {
         this.guestname = guestname;
     }
-    public String getGuestid() {
-        return guestid;
-    }
+    public String getGuestid() {return guestid;}
     public void setGuestid(String guestid) {this.guestid = guestid;}
     public String getEmail() {
         return email;
@@ -142,4 +150,7 @@ public class hotelBean {
     public void setMemberaddress(String memberaddress) {
         this.memberaddress = memberaddress;
     }
+    public String getLoginName(){return loginName;}
+    public String getLoginPassword(){return loginPassword;}
+
 }

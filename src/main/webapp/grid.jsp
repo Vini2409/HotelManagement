@@ -1,7 +1,8 @@
-<%@ page import="com.example.task.searchdate" %>
+
 <%@ page import="com.example.task.hotelBean" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.example.task.bookToday" %><%--
+
+<%@ page import="com.example.task.excel" %><%--
   Created by IntelliJ IDEA.
   User: vinis
   Date: 17-05-2022
@@ -58,7 +59,7 @@
 </head>
 <body>
 <nav>
-    <a href="member/displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="user/displayAvalibleRooms.jsp">ROOMS</a>
 </nav>
 <br><br><br>
 <h1 style="color:white;text-align: center;">SEARCH RESULT</h1><br/><br/>
@@ -67,12 +68,7 @@
 <jsp:setProperty property="*" name="obj"/>
 
 <%
-    int status= bookToday.bookToday(obj);
-    if(status>0)
-        out.println("Updated successfully");
-    else {
-        out.println("Updation failed");
-    }
+        excel.excel();
 
 %>
 <%--<div class="styling">--%>

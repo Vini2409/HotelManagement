@@ -40,8 +40,9 @@
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>
 <nav>
-    <a href="../member/memberHomePage.jsp">HOME </a>
-    <a href="../member/displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="../user/HomePage.jsp">HOME </a>
+    <a href="../user/displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="logout.jsp">LOGOUT</a>
 </nav>
 <br><br><br>
 <h1 style="color:white;text-align: center;">CANCEL BOOKING STATUS</h1><br/><br/>

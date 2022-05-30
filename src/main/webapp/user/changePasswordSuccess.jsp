@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: vinis
-  Date: 16-05-2022
-  Time: 19:34
+  Date: 21-05-2022
+  Time: 16:25
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -29,8 +29,6 @@
     </style>
 </head>
 <body>
-<%@ page import="com.example.task.managerooms" %>
-<%@ page import="com.example.task.manageuser" %>
 <%@ page import="com.example.task.authendication" %>
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>

@@ -1,13 +1,14 @@
 <%@ page import="com.example.task.hotelBean" %>
-<%@ page import="com.example.task.search" %><%--
+<%@ page import="com.example.task.Search" %><%--
   Created by IntelliJ IDEA.
   User: vinis
   Date: 12-05-2022
   Time: 12:09
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="com.example.task.searchdate" %>
 <%@ page import="java.util.*" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.util.stream.Collectors" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -72,8 +73,9 @@
 </head>
 <body>
 <nav>
-    <a href="../member/memberHomePage.jsp">HOME </a>
-    <a href="../member/displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="../user/HomePage.jsp">HOME </a>
+    <a href="../user/displayAvalibleRooms.jsp">ROOMS</a>
+    <a href="logout.jsp">LOGOUT</a>
 </nav>
 <br><br><br>
 <h1 style="color:white;text-align: center;">SEARCH RESULT</h1><br/>
@@ -82,19 +84,22 @@
 <jsp:setProperty property="*" name="obj"/>
 <h1>
 <%
-    List<hotelBean> list= search.roomsearch(obj);
-    StringBuilder template = new StringBuilder();
-    if(list.size()==0){
-        template.append("<tr>No Rooms with the given specification. Check the available rooms</tr>");
-    }
-    else {
-        for (hotelBean s : list) {
-            template.append("<form action=booking.jsp method='post' >");
-            template.append("<div class=styling>");
-            template.append("ROOM NUMBER: ").append(s.getAva_room_id()).append("<br>Floor: ").append(s.getFloor()).append("</br>Price: ").append(s.getPrice()).append("</br>Type: ").append(s.getType()).append("<center>").append("</br><Button name='1234' value=").append(s.getAva_room_id()).append(">BOOK THIS ROOM</Button></center></div>");
+        StringBuilder template = new StringBuilder();
+        List<hotelBean> list= Search.roomsearch(obj);
+        System.out.println(list.size());
+        if(list.size()==0){
+            template.append("<tr>No Rooms with the given specification. Check the available rooms</tr>");
         }
-        template.append("</form>");
-    }
+        else {
+            for (hotelBean s : list) {
+                template.append("<form action=bookARoom.jsp method='post' >");
+                template.append("<div class=styling>");
+                template.append("ROOM NUMBER: ").append(s.getAva_room_id()).append("<br>Floor: ").append(s.getFloor()).append("</br>Price: ").append(s.getPrice()).append("</br>Type: ").append(s.getType()).append("<center>").append("</br><Button name='1234' value=").append(s.getAva_room_id()).append(">BOOK THIS ROOM</Button></center></div>");
+            }
+            template.append("</form>");
+        }
+
+
 %>
 </h1>
 <table>

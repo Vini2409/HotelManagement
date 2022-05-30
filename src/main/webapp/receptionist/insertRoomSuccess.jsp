@@ -42,6 +42,7 @@
 <nav>
     <a href="Home.jsp">HOME </a>
     <a href="displayRoomRecep.jsp">ROOMS</a>
+    <a href="../common/logout.jsp">LOGOUT</a>
 </nav>
 <br><br><br>
 <h1 style="color:white;text-align: center;">INSERT ROOM </h1><br/><br/>
