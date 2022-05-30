@@ -40,8 +40,8 @@ public class manageuser {
                 }
                 excel.excel(u.getRoomno(),u.getClientname(),u.getNo_of_person(),Date.valueOf(u.getCheckin()),Date.valueOf(u.getCheckout()));
 //                excel.selectall();
-        }catch(Exception ex){
-            System.out.println(ex);
+        }catch(Exception e){
+            System.out.println(e);
         }
         return status;
     }
