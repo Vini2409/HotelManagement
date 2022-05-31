@@ -73,6 +73,13 @@
     </style>
 </head>
 <body>
+<%
+    if(session.getAttribute("validid")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("guestLogin.jsp");
+    }
+%>
 <nav>
     <a href="HomePage.jsp">HOME </a>
     <a href="../common/logout.jsp">LOGOUT</a>

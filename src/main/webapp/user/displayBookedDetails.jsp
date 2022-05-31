@@ -26,6 +26,13 @@
     </style>
 </head>
 <body>
+<%
+    if(session.getAttribute("validid")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("guestLogin.jsp");
+    }
+%>
 <table>
 <form method="post" action="BookingDetails.jsp">
     <tr><td>USER NAME: </td><td><input style="font-size:20px;" type="text" name="guestid" readonly="readonly" value=${sessionScope.validid}></td></tr><br><br>

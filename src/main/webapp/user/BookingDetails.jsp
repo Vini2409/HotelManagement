@@ -68,7 +68,6 @@
     </style>
 </head>
 <body>
-<%@ page import="com.example.task.managerooms" %>
 <%@ page import="com.example.task.users" %>
 <%@ page import="com.example.task.hotelBean" %>
 <%@ page import="java.util.List" %>
@@ -93,7 +92,7 @@
         for (hotelBean s : list) {
             template.append("<form action=cancelBooking.jsp method='post' >");
             template.append("<div class=styling>");
-            template.append("Room Number: ").append(s.getRoomno()).append("</br>Name: ").append(s.getClientname()).append("<input type=hidden name='gid' value=").append(s.getClientname()).append(">").append("</br>Check In Date: ").append(s.getCheckin()).append("</br>Check Out Date: ").append(s.getCheckout()).append("<center>").append("</br><Button name='1234' value=").append(s.getRoomno()).append(">CANCEL BOOKING</Button></center></div>");
+            template.append("Room Number: ").append(s.getRoomno()).append("</br>Name: ").append(s.getGuestid()).append("<input type=hidden name='gid' value=").append(s.getGuestid()).append(">").append("</br>Check In Date: ").append(s.getCheckin()).append("</br>Check Out Date: ").append(s.getCheckout()).append("<center>").append("</br><Button name='1234' value=").append(s.getRoomno()).append(">CANCEL BOOKING</Button></center></div>");
 //            template.append(" <tr><td>").append(s.getRoomno()).append("</td><td>").append(s.getClientname()).append("</td><td>").append(s.getEmail()).append("</td><td>").append(s.getContactno()).append("</td><td>").append(s.getNo_of_person()).append("</td><td>").append(s.getCheckin()).append("</td><td>").append(s.getCheckout()).append("</td></tr>\n");
         }
     }

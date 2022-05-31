@@ -13,7 +13,7 @@ public class excel {
     static Connection conn;
     static PreparedStatement pst;
 
-    public static void excel(int roomno,String clientname,int no_of_people,Date checkin,Date checkout) {
+    public static void excel(int roomno,String guestid,int no_of_people,Date checkin,Date checkout) {
 //            String filename = "C:\\Users\\vinis\\Downloads\\data-.csv";
 //            Statement stmt;
 //            try {
@@ -61,7 +61,7 @@ public class excel {
             {
                 recordString = raf.readLine();
             }
-            recordString = roomno + "," + clientname + "," + no_of_people + "," + checkin +","+checkout;
+            recordString = roomno + "," + guestid + "," + no_of_people + "," + checkin +","+checkout;
             raf.writeBytes(recordString);
             raf.writeBytes(System.lineSeparator());
             System.out.println("User added");

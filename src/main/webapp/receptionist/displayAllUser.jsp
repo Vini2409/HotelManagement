@@ -73,6 +73,13 @@
     </style>
 </head>
 <body>
+<%
+    if(session.getAttribute("recpLogin")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("receptionistLogin.jsp");
+    }
+%>
 <nav>
     <a href="Home.jsp">HOME </a>
     <a href="displayBookedUsers.jsp">BOOKED USER</a>
@@ -104,7 +111,7 @@
     }
     else {
         for (hotelBean s : listMember) {
-            templateMember.append("<form action=removeMember.jsp method='post' >");
+            templateMember.append("<form action=removeUser.jsp method='post' >");
             templateMember.append("<div class=styling>");
             templateMember.append("Name: ").append(s.getGuestname()).append("</br>Unique ID: ").append(s.getGuestid()).append("</br>Email ID: ").append(s.getEmail()).append("</br>Contact Number: ").append(s.getContactno()).append("</br>Address: ").append(s.getAddress()).append("</br><Button name='1234' value=").append(s.getGuestid()).append(">REMOVE USER</Button></form>");
             templateMember.append("<form action=../user/edituserprofile.jsp method='post' ><Button style='background-color:#4AE0EA;' name='update' value=").append(s.getGuestid()).append(">UPDATE USER</Button>").append("</form>");

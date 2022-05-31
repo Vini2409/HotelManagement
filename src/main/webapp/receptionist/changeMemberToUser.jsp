@@ -26,17 +26,24 @@
 </style>
 </head>
 <body>
+<%
+    if(session.getAttribute("recpLogin")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("receptionistLogin.jsp");
+    }
+%>
 <h1 style="text-align:center;">CHANGE THE ROLE</h1>
 <table>
     <form method="post" action="changeToUserRoleSuccess.jsp" id="f1">
         <%
             if(request.getParameter("changeRole")!=null){
         %>
-        <tr><td>GUEST UNIQUE ID: </td><td><input style="font-size:25px;" type="text" name="memberid" readonly="readonly" value=<%=request.getParameter("changeRole")%> ></td></tr><br><br>
+        <tr><td>GUEST UNIQUE ID: </td><td><input style="font-size:25px;" type="text" name="guestid" readonly="readonly" value=<%=request.getParameter("changeRole")%> ></td></tr><br><br>
         <%
         }else{
         %>
-        <tr><td>GUEST UNIQUE ID: </td><td><input style="font-size:20px;" type="text" name="memberid"/></td></tr><br><br>
+        <tr><td>GUEST UNIQUE ID: </td><td><input style="font-size:20px;" type="text" name="guestid"/></td></tr><br><br>
         <%
             }
         %>

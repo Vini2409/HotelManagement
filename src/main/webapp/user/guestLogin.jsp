@@ -34,7 +34,7 @@
 <body>
 <h1 style="text-align: center;"><%= "LOGIN PAGE" %></h1>
 <br><br><br><br>
-<form method="post" action="guestLoginValidation.jsp">
+<form method="post" action="../Servlet">
 
     <table>
         <thead>

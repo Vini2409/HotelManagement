@@ -30,6 +30,13 @@
     </style>
 </head>
 <body>
+<%
+    if(session.getAttribute("recpLogin")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("receptionistLogin.jsp");
+    }
+%>
 <h1 style="margin-left:800px;">UPDATE A ROOM DETAILS</h1>
 <table>
     <form name="f4" method="post" action="updationSuccess.jsp">

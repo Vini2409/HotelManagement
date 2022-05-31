@@ -38,11 +38,26 @@
         .styling:hover{
             transform:scale(1.1);
         }
+        .center{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
     </style>
 </head>
 <body>
-
+<%
+    if(session.getAttribute("recpLogin")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("receptionistLogin.jsp");
+    }
+%>
 <h1 style="font-size: 50px;text-align: center;text-shadow: 2px 2px #F9084A;">HOTEL MANAGEMENT</h1><br><br>
+<div class="center">
+    <img src="https://enlistgroup.com/wp-content/uploads/2020/02/Property-Management-Software-%E0%B8%AA%E0%B8%B3%E0%B8%AB%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88-Hospitality-Management-Company.jpg" alt="no img"/>
+</div>
 <div class="grids">
     <div class="styling"><h3><a href="../common/bookARoom.jsp">BOOK A ROOM</a></h3></div>
     <div class="styling"><h3><a href="../common/search.jsp">SEARCH ROOMS BASED ON CONDITIONS</a></h3></div>

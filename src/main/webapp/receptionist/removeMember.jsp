@@ -25,6 +25,13 @@
 </style>
 </head>
 <body>
+<%
+    if(session.getAttribute("recpLogin")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("receptionistLogin.jsp");
+    }
+%>
 <table>
     <form method="post" action="removeMemberSuccess.jsp" id="f1">
         <%

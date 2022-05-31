@@ -35,6 +35,14 @@
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>
 <%
+    if(session.getAttribute("recpLogin")==null && session.getAttribute("validid")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("../index.jsp");
+    }
+%>
+
+<%
     long ctm = System.currentTimeMillis();
     Date d = new Date(ctm);
     LocalDate localDate = d.toLocalDate();
@@ -57,17 +65,18 @@
         <%
             }if(n==null){
         %>
-        <tr><td>User Name: </td><td><input style="font-size:25px;" type="text" name="clientname"></td></tr><br><br>
+        <tr><td>User Name: </td><td><input style="font-size:25px;" type="text" name="guestid"></td></tr><br><br>
         <%
         }else{
         %>
-        <tr><td>User Name: </td><td><input style="font-size:25px;" type="text" name="clientname" readonly="readonly" value=${sessionScope.validid} ></td></tr><br><br>
+        <tr><td>User Name: </td><td><input style="font-size:25px;" type="text" name="guestid" readonly="readonly" value=${sessionScope.validid} ></td></tr><br><br>
         <%
             }
         %>
         <tr><td>No Of Person: </td><td><input style="font-size:25px;" type="number" name="no_of_person"/></td></tr><br><br>
         <%
             int status= manageuser.checkIfUser(obj,(String)request.getSession().getAttribute("validid"));
+            System.out.println(status);
             if(status>0){
                 System.out.println(sqldate);
         %>

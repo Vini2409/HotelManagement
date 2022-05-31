@@ -29,6 +29,13 @@
     </style>
 </head>
 <body>
+<%
+    if(session.getAttribute("recpLogin")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("receptionistLogin.jsp");
+    }
+%>
 <table>
 <form name="f1" method="post" action="insertRoomSuccess.jsp" id="f1">
     <tr><td>Room Number: </td><td><input style="font-size:25px;" type="number" name="ava_room_id"/></td></tr><br><br>

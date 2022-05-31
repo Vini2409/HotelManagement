@@ -33,6 +33,13 @@
     </style>
 </head>
 <body>
+<%
+    if(session.getAttribute("recpLogin")==null && session.getAttribute("validid")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("../index.jsp");
+    }
+%>
 <h1 style="margin-left:1000px;">SEARCH ROOMS</h1>
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>
 <jsp:setProperty property="*" name="obj"/>

@@ -35,7 +35,6 @@
     </style>
 </head>
 <body>
-<%@ page import="com.example.task.managerooms" %>
 <%@ page import="com.example.task.manageuser" %>
 
 <jsp:useBean id="obj" class="com.example.task.hotelBean"></jsp:useBean>

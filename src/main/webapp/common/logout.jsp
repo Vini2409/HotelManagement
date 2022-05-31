@@ -30,6 +30,7 @@
 <body>
 <%
     session.removeAttribute("validid");
+    session.invalidate();
 %>
 <h1>THANK YOU </h1>
 <h1><a href='../index.jsp'>GO TO THE STATING PAGE</a></h1>

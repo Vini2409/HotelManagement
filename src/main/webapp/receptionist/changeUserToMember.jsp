@@ -27,6 +27,13 @@
     </style>
 </head>
 <body>
+<%
+    if(session.getAttribute("recpLogin")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("receptionistLogin.jsp");
+    }
+%>
 <h1 style="text-align:center;">CHANGE THE ROLE</h1>
 <table>
     <form method="post" action="changeToMemberRoleSuccess.jsp" id="f1">

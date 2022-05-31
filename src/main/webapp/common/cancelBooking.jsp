@@ -27,6 +27,13 @@
 </head>
 <body>
 <%
+    if(session.getAttribute("recpLogin")==null && session.getAttribute("validid")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("../index.jsp");
+    }
+%>
+<%
     System.out.println(request.getParameter("gid"));
 %>
 <table>
@@ -34,11 +41,11 @@
         <%
             if(request.getParameter("gid")!=null){
         %>
-        <tr><td>GUEST UNIQUE NAME: </td><td><input style="font-size:20px;" type="text" name="clientname" readonly="readonly" value=<%=request.getParameter("gid")%> ></td></tr><br><br>
+        <tr><td>GUEST UNIQUE NAME: </td><td><input style="font-size:20px;" type="text" name="guestid" readonly="readonly" value=<%=request.getParameter("gid")%> ></td></tr><br><br>
         <%
         }else{
         %>
-        <tr><td>GUEST UNIQUE NAME: </td><td><input style="font-size:20px;" type="text" name="clientname" ></td></tr><br><br>
+        <tr><td>GUEST UNIQUE NAME: </td><td><input style="font-size:20px;" type="text" name="guestid" ></td></tr><br><br>
         <%
             }if(request.getParameter("1234")!=null){
         %>

@@ -31,6 +31,13 @@
 <body>
 <h1 style="text-shadow:2px 2px #F9084A;text-align: center;font-size: 50px;">UPDATE</h1>
 <%
+    if(session.getAttribute("validid")==null){
+        String url=request.getRequestURL().toString();
+        session.setAttribute("currentPage",url);
+        response.sendRedirect("guestLogin.jsp");
+    }
+%>
+<%
     String n= (String) session.getAttribute("validid");
     System.out.println(n);
 %>
